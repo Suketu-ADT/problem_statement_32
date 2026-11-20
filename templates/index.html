@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>College Rulebook Q&amp;A</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="College Rulebook Q and A home">
+        <span class="brand-mark" aria-hidden="true">R</span>
+        <span>Rulebook<span class="brand-light">Q&amp;A</span></span>
+      </a>
+      <span class="local-badge"><span class="status-dot"></span> College handbook assistant</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR CAMPUS GUIDE</div>
+        <h1>College rules,<br><span>clear answers.</span></h1>
+        <p class="intro-copy">Ask about attendance, exams, conduct, and campus policies. Every answer is grounded in your college handbook.</p>
+      </section>
+
+      <section class="workspace" aria-label="Handbook question and answer">
+        <div class="workspace-heading">
+          <div>
+            <div class="section-kicker">GET STARTED</div>
+            <h2>Bring your handbook</h2>
+          </div>
+          <div class="step-count"><span>01</span><i></i><span>02</span></div>
+        </div>
+
+        <form id="upload-form" class="upload-area">
+          <input id="handbook-file" name="handbook" type="file" accept="application/pdf,.pdf" hidden>
+          <div class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 3.75h6.5L19 9.2v10.05A1.75 1.75 0 0 1 17.25 21h-10.5A1.75 1.75 0 0 1 5 19.25V5.5a1.75 1.75 0 0 1 2-1.75Z"/><path d="M13 4v5.5h5.5M12 17v-5m0 0-2 2m2-2 2 2"/></svg>
+          </div>
+          <div class="upload-copy">
+            <p class="upload-title">Drop your college handbook here</p>
+            <p class="upload-subtitle">PDF format · up to 20 MB</p>
+          </div>
+          <button class="button button-outline" id="choose-file" type="button">Choose PDF</button>
+          <div class="upload-file" id="file-name" hidden></div>
+        </form>
+        <div class="upload-feedback" id="upload-feedback" role="status" aria-live="polite"></div>
+
+        <div class="divider"><span></span><b>THEN ASK</b><span></span></div>
+
+        <form id="question-form" class="question-form">
+          <label for="question">What would you like to know?</label>
+          <div class="question-row">
+            <input id="question" type="text" maxlength="1000" placeholder="e.g. What attendance is required for exams?" autocomplete="off" disabled>
+            <button class="button button-primary" id="ask-button" type="submit" disabled>
+              <span>Ask question</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg>
+            </button>
+          </div>
+          <div class="question-hint"><span class="hint-sparkle">✦</span> Answers include page references from your handbook</div>
+        </form>
+      </section>
+
+      <section class="answer-card" id="answer-card" hidden aria-live="polite">
+        <div class="answer-topline"><span class="answer-label"><span class="answer-icon">✦</span> HANDBOOK ANSWER</span><span class="grounded-badge">SOURCE GROUNDED</span></div>
+        <div class="asked-question" id="asked-question"></div>
+        <div class="answer-text" id="answer-text"></div>
+        <div class="sources" id="sources"></div>
+      </section>
+
+      <div class="global-error" id="global-error" role="alert" hidden></div>
+      <section class="suggestions" id="suggestions">
+        <div class="suggestion-heading"><span>POPULAR QUESTIONS</span><span class="suggestion-rule"></span></div>
+        <div class="suggestion-chips">
+          <button type="button" class="suggestion-chip" data-question="What is the minimum attendance required to sit for exams?">Attendance requirements <span>↗</span></button>
+          <button type="button" class="suggestion-chip" data-question="How do I apply for medical leave?">Leave policy <span>↗</span></button>
+          <button type="button" class="suggestion-chip" data-question="What is the process for exam revaluation?">Exam rules <span>↗</span></button>
+          <button type="button" class="suggestion-chip" data-question="Who should I contact about a campus complaint?">Campus support <span>↗</span></button>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>College Rulebook Q&amp;A</span><span>Check the cited handbook page before acting on a policy.</span></footer>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
